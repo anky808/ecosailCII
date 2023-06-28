@@ -8,8 +8,10 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
 from CII import serializers
+from CII.serializers import VesselOwnerMasterSerializer, ContactTypeMasterSerializer
 from CII import models
 from CII import permissions
+from CII.models import VesselOwnerMaster, ContactTypeMaster
 
 class HelloApiView(APIView):
     """ Test API View"""
@@ -109,3 +111,13 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 class UserLoginApiView(ObtainAuthToken):
     """ Handle creating user authentication tokens"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+
+
+class VesselOwnerMasterViewSet(viewsets.ModelViewSet):
+    queryset=VesselOwnerMaster.objects.all()
+    serializer_class =VesselOwnerMasterSerializer
+
+class ContactTypeMasterViewSet(viewsets.ModelViewSet):
+    queryset=ContactTypeMaster.objects.all()
+    serializer_class = ContactTypeMasterSerializer
+

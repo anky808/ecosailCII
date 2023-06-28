@@ -59,3 +59,18 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """ Return string representations of our user"""
         return self.email
+
+class VesselOwnerMaster(models.Model):
+    Company_Name = models.CharField(max_length=255)
+    Company_IMO_Number = models.IntegerField()
+    Country_Registration = models.CharField(max_length=150)
+    Company_Address = models.TextField()
+    Company_identification_Number = models.IntegerField()
+    Company_Description = models.TextField()
+    Add_contact_details = models.CharField(max_length=20)
+
+
+class ContactTypeMaster(models.Model):
+    contact_type_name = models.CharField(max_length=255)
+    contact_description = models.TextField(max_length=255)
+    short_name = models.CharField(max_length=25)

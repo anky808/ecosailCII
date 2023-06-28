@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from CII import models
+from CII.models import VesselOwnerMaster, ContactTypeMaster
 
 class HelloSerializer(serializers.Serializer):
     """ Serializes a name field for testing our APIView"""
@@ -40,3 +41,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         return super().update(instance, validated_data)
+
+
+class VesselOwnerMasterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.VesselOwnerMaster
+        fields ="__all__"
+
+class ContactTypeMasterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ContactTypeMaster
+        fields ="__all__"
